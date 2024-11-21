@@ -29,15 +29,12 @@ function adiciona(){
 
     function deleta(){
         s = list.length
-        for(i=0, v = 0; v<s; i++){
-            if(list[i] == x){
-                return i;
-               
-            }
+        for(i=0; i<s; i++){
+           if(list[i] == x){
+            list[i] = ""
+            classSaida.innerText = list
+            } else{ i++}
         }
-        
-        classSaida.innerText = list[i]
-        
     }
 }
 
