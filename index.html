@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="app.js" defer></script>
+    <script src="modal.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>To-do List</title>
 </head>
 <body>
@@ -23,8 +25,22 @@
         </ul>
 
         <div class="saida"></div>
-
     </div>
     
+    <div class="fade fixed top-0 left-0 w-full h-full bg-black/[.2] z-10 transition-opacity duration-500 opacity-100 pointer-events-auto"></div>
+    <div id="modal" class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] max-w-[90%] bg-white p-5 rounded-md z-10 transition-opacity duration-500 opacity-100 pointer-events-auto">
+        <div class="modal-header"> 
+            <h2>Alunos</h2>
+            <div class="close-modal">X</div>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li>Aluno (44) 99999-9999 w</li>
+                <li>Aluno (44) 99999-9999 w</li>
+                <li>Aluno (44) 99999-9999 w</li>
+            </ul>
+        </div>
+    </div>
+
 </body>
 </html>
