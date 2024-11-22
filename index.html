@@ -7,24 +7,22 @@
     <script src="apps.js/modal.js" defer></script>
     <script src="apps.js/tema.js" defer></script>
     <link rel="stylesheet" href="styles.css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="tailwind.css" rel="stylesheet">
     <title>To-do List</title>
 </head>
-<body class="dark:bg-gray-200">
+<body class="bg-white dark:bg-black">
 
-    <div class="modo p-1 w-10 flex items-center justify-center bg-gray-200 dark:bg-gray-800 rounded-full cursor-pointer">
-        <img id="theme-icon" src="recursos/img/sol.svg" class="w-6 h-6">
+    <div class="modo p-1 w-10 flex items-center justify-center bg-gray-200 rounded-full cursor-pointer">
+        <img id="theme-icon" src="recursos/img/lightMode.svg" class="w-6 h-6">
     </div>
 
     <div class="container">
         <h1>Lista de Tarefas</h1>
 
-        
-            <div>
-                <input type="text" id="input">
-                <button type="submit" id="button">+</button>
-            </div>
-        
+        <div>
+            <input type="text" id="input">
+            <button type="submit" id="button">+</button>
+        </div>
 
         <ul id="list" style="width:200px; height: 180px; background-color: yellow;">
         </ul>
@@ -46,6 +44,7 @@
             <p>Talisson Sidnei Santos (44) 99893-7610 <img src="recursos/img/wpp.svg"></p>
         </div>
       </div>
+    </div>
 
 </body>
 </html>
