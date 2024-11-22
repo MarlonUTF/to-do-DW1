@@ -30,7 +30,7 @@ function adiciona() {
     function deleta() {
         s = list.length;
         
-        for
+        //for
 
         // if (x == list[i]) {
         //     list -= list[i];
