@@ -26,12 +26,12 @@ function adiciona() {
     });
 
     function deleta() {
-        const index = (list.indexOf(x))
+        index = this.rowIndex;
     
         if (index !== null) {
             // Remove o item da lista pelo índice
             list.splice(index, 1);
-            
+        
             // Atualiza a lista no HTML
             document.querySelector("#list").innerHTML = list.map((item, index) => `
                 <li> 
