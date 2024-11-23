@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-li{
-  display: flex;
-}
 .delete, .editar {
   width: 30px;
   height: 30px;
@@ -13,12 +10,6 @@ li{
 
 .delete:hover{
   background-color: green;
-}
-
-.saida{
-  width: 100px;
-  height: 100px;
-  background-color: aqua;
 }
 
 h1 {
