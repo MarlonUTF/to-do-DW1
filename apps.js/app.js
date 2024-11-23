@@ -23,11 +23,15 @@ function adiciona() {
 function atualizarLista() {
     listContainer.innerHTML = list
         .map((item, index) => `
-            <li>
-                <div class="feito"></div> 
-                <div class="item">${item}</div>
-                <img class="editar" data-index="${index}" src="/recursos/img/editar.svg">
-                <img class="delete" data-index="${index}" src="/recursos/img/deletar.svg">
+            <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
+              <div class="flex items-center gap-2">
+                <img src="/recursos/img/checkBoxVazia.svg">
+                <div class="item truncate max-w-xs">${item}</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <img class="editar w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/editar.svg" alt="Editar">
+                <img class="delete w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/deletar.svg" alt="Deletar">
+              </div>
             </li>
         `)
         .join("");

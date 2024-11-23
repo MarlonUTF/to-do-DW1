@@ -26,18 +26,18 @@
             <button type="submit" id="button" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
         </div>
 
-        <ul id="list" class="min-w-max h-96 bg-yellow-300 mx-3">
-            <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2">
-                <div class="flex">
-                    <div class="feito"></div>
-                    <div class="item">${item}</div>
-                </div>
-                <div class="flex">
-                    <img class="editar" data-index="${index}" src="/recursos/img/editar.svg">
-                    <img class="delete" data-index="${index}" src="/recursos/img/deletar.svg">
-                </div>
+        <ul id="list" class="min-w-max h-96 bg-yellow-300 mx-3 overflow-auto">
+            <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
+              <div class="flex items-center gap-2">
+                <img src="/recursos/img/checkBoxVazia.svg">
+                <div class="item truncate max-w-xs">${item}</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <img class="editar w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/editar.svg" alt="Editar">
+                <img class="delete w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/deletar.svg" alt="Deletar">
+              </div>
             </li>
-        </ul>
+          </ul>
     </div>
     
     <div id="fade" class="hide"></div>
