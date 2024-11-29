@@ -25,7 +25,9 @@ function atualizarLista() {
         .map((item, index) => `
             <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
               <div class="flex items-center gap-2">
-                <img src="/recursos/img/checkBoxVazia.svg">
+                <div>
+                <input type="checkbox" name ="linguages" class="caixa">
+                </div>
                 <div class="item truncate max-w-xs">${item}</div>
               </div>
               <div class="flex items-center gap-2">
@@ -58,3 +60,5 @@ function deleta(index) {
     list.splice(index, 1);
     atualizarLista();
 }
+
+
