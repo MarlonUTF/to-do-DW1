@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.delete, .editar {
-  width: 30px;
-  height: 30px;
-  border: 1px solid black;
-}
-
-.delete:hover{
-  background-color: green;
-}
-
-h1 {
-  margin-bottom: 1rem;
-}
 
 #fade {
   position: fixed;
@@ -67,14 +54,4 @@ h1 {
 
 #modal.hide {
   top: 0;
-}
-
-.alunos p{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.alunos p img{
-    margin: 0;
 }

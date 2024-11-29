@@ -12,7 +12,7 @@
 </head>
 <body class="bg-cyan-600 dark:bg-gray-900 flex items-center justify-center  min-h-screen min-w-screen p-10">
 
-    <div class="container bg-white dark:bg-gray-500 w-5/6 rounded-xl p-6">
+    <div class="container bg-white dark:bg-gray-500 min-w-full min-h-full rounded-xl p-6">
        
         <header class="flex items-center justify-between">
             <h1>Lista de Tarefas</h1>
@@ -26,8 +26,8 @@
             <button type="submit" id="button" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
         </div>
 
-        <ul id="list" class="min-w-max h-96 bg-yellow-300 mx-3 overflow-auto">
-            <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
+        <ul id="list" class="min-w-max h-96 mx-3 overflow-auto">
+            <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-3 gap-2">
               <div class="flex items-center gap-2">
                 <img src="/recursos/img/checkBoxVazia.svg">
                 <div class="item truncate max-w-xs">${item}</div>
@@ -49,9 +49,9 @@
       <div class="modal-body">
         <h3>Alunos:</h3>
         <div class="alunos">
-            <p>Marlon Sidnei Santos (44) 99956-5271 <a href="https://wa.me/5544999565271?text=Ol%C3%A1%2C%20Marlon!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
-            <p>Ryan Tomaz Talavieira (44) 99970-7623 <a href="https://wa.me/5544999707623?text=Ol%C3%A1%2C%20Ryan!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
-            <p>Talisson Sidnei Santos (44) 99893-7610 <a href="https://wa.me/5544998937610?text=Ol%C3%A1%2C%20Talisson!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
+            <p class="flex items-center justify-evenly">Marlon Sidnei Santos (44) 99956-5271 <a href="https://wa.me/5544999565271?text=Ol%C3%A1%2C%20Marlon!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
+            <p class="flex items-center justify-evenly">Ryan Tomaz Talavieira (44) 99970-7623 <a href="https://wa.me/5544999707623?text=Ol%C3%A1%2C%20Ryan!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
+            <p class="flex items-center justify-evenly">Talisson Sidnei Santos (44) 99893-7610 <a href="https://wa.me/5544998937610?text=Ol%C3%A1%2C%20Talisson!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
         </div>
       </div>
     </div>
