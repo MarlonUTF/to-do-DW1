@@ -12,7 +12,6 @@ idInput.addEventListener("keypress", (event) => {
     }
 });
 
-
 function adiciona() {
     let item = {
         id: list.length + 1,
@@ -28,7 +27,7 @@ function adiciona() {
 }
 
 function atualizarLista() {
-    listContainer.innerHTML = list.map((item, index) => `
+    listContainer.innerHTML = list.map((item ) => `
             <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
               <div class="flex items-center gap-2">
                 <div>
@@ -37,8 +36,8 @@ function atualizarLista() {
                 <div class="item truncate max-w-xs">${item.tarefa}</div>
               </div>
               <div class="flex items-center gap-2">
-                <img class="editar w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/editar.svg" alt="Editar">
-                <img class="delete w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/deletar.svg" alt="Deletar">
+                <img class="editar w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
+                <img class="delete w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
               </div>
             </li>
         `)
@@ -56,12 +55,10 @@ function atualizarLista() {
     document.querySelectorAll(".caixa").forEach((button) => {
         button.addEventListener("click", () => selecionados(button.dataset.index));
     });
-
-    
-
 }
 
 function edita(index) {
+    index --
     let novoValor = prompt("Digite o novo valor:", list[index].tarefa);
     if (novoValor !== null && novoValor.trim() !== "") {
         list[index].tarefa = novoValor.trim();
@@ -70,6 +67,7 @@ function edita(index) {
 }
 
 function deleta(index) {
+    index --
     list.splice(index, 1);
     atualizarLista();
     selecionados();
@@ -80,11 +78,12 @@ function selecionados(){
 
     for( i=0, v=0; i<list.length;i++){
         if(caixa[i].checked){
-            list[i].feita = checked
             v+=1;
-            progress.innerHTML = `${v}/${list.length}`;
+            progress.innerHTML = `${v}/${list.length} tarefas concluídas`;
+            list[i].feita = "checked";
         } else{  
-            list[i].feita = ""
-            progress.innerHTML = `${v}/${list.length}`; }
+            progress.innerHTML = `${v}/${list.length} tarefas concluídas`; 
+            list[i].feita = "";
+        }
     } 
 }
