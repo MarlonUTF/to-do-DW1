@@ -58,41 +58,37 @@ function atualizarLista() {
 }
 
 function edita(index) {
-    index--
-    // let novoValor = list[index].tarefa.innerHTML = `<div class="flex min-w-max">
-    //              <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center">
-    //              <button type="submit" class="buttonNovo" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
-    //         </div>`;
-    // if (novoValor !== null && novoValor.trim() !== "") {
-    //     list[index].tarefa = novoValor.trim();
-    //     atualizarLista();
-    // }
+    index--; // Ajustar para o índice correto
 
-    let valorNovo = list[index].tarefa.innerHTML = `<div class="flex min-w-max">
-                <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center">
-                <button type="submit" class="buttonNovo" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
-            </div>`;
+    // Criar elementos HTML diretamente no DOM
+    const listItem = document.querySelectorAll("li")[index];
+    listItem.innerHTML = `
+        <div class="flex min-w-max">
+            <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center" value="">
+            <button id="buttonNovo" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">Salvar</button>
+        </div>`;
 
-        let classButton = document.querySelector(".buttonNovo");
-        let classInput = document.querySelector(".inputNovo");
+    // Adicionar evento ao botão "Salvar"
+    document.getElementById("buttonNovo").addEventListener("click", () => {
+        const novoValor = document.getElementById("inputNovo").value.trim();
+        if (novoValor) {
+            list[index].tarefa = novoValor; // Atualizar o valor da tarefa na lista
+            atualizarLista(); // Re-renderizar a lista
+        }
+    });
 
-        classButton.addEventListener("click", adiciona);
-
-        classInput.addEventListener("keypress", (event) => {
-            if (event.key === "Enter") {
-                adiciona();
+    // Permitir salvar ao pressionar Enter
+    document.getElementById("inputNovo").addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+            const novoValor = event.target.value.trim();
+            if (novoValor) {
+                list[index].tarefa = novoValor;
+                atualizarLista();
             }
-        });
-
-        function adiciona() {
-            let valorNovo = classInput.value.trim();     
-        }    
-
-        if (valorNovo !== null && valorNovo.trim() !== "") {
-            list[index].tarefa = valorNovo.trim();
-            atualizarLista();
-            }
+        }
+    });
 }
+
 
 function deleta(index) {
     index--
