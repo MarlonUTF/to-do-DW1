@@ -27,7 +27,7 @@ function adiciona() {
 }
 
 function atualizarLista() {
-    listContainer.innerHTML = list.map((item ) => `
+    listContainer.innerHTML = list.map((item) => `
             <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
               <div class="flex items-center gap-2">
                 <div>
@@ -58,32 +58,60 @@ function atualizarLista() {
 }
 
 function edita(index) {
-    index --
-    let novoValor = prompt("Digite o novo valor:", list[index].tarefa);
-    if (novoValor !== null && novoValor.trim() !== "") {
-        list[index].tarefa = novoValor.trim();
-        atualizarLista();
-    }
+    index--
+    // let novoValor = list[index].tarefa.innerHTML = `<div class="flex min-w-max">
+    //              <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center">
+    //              <button type="submit" class="buttonNovo" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
+    //         </div>`;
+    // if (novoValor !== null && novoValor.trim() !== "") {
+    //     list[index].tarefa = novoValor.trim();
+    //     atualizarLista();
+    // }
+
+    let valorNovo = list[index].tarefa.innerHTML = `<div class="flex min-w-max">
+                <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center">
+                <button type="submit" class="buttonNovo" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
+            </div>`;
+
+        let classButton = document.querySelector(".buttonNovo");
+        let classInput = document.querySelector(".inputNovo");
+
+        classButton.addEventListener("click", adiciona);
+
+        classInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                adiciona();
+            }
+        });
+
+        function adiciona() {
+            let valorNovo = classInput.value.trim();     
+        }    
+
+        if (valorNovo !== null && valorNovo.trim() !== "") {
+            list[index].tarefa = valorNovo.trim();
+            atualizarLista();
+            }
 }
 
 function deleta(index) {
-    index --
+    index--
     list.splice(index, 1);
     atualizarLista();
     selecionados();
 }
 
-function selecionados(){
+function selecionados() {
     let caixa = document.getElementsByName("itens")
 
-    for( i=0, v=0; i<list.length;i++){
-        if(caixa[i].checked){
-            v+=1;
+    for (i = 0, v = 0; i < list.length; i++) {
+        if (caixa[i].checked) {
+            v += 1;
             progress.innerHTML = `${v}/${list.length} tarefas concluídas`;
             list[i].feita = "checked";
-        } else{  
-            progress.innerHTML = `${v}/${list.length} tarefas concluídas`; 
+        } else {
+            progress.innerHTML = `${v}/${list.length} tarefas concluídas`;
             list[i].feita = "";
         }
-    } 
+    }
 }
