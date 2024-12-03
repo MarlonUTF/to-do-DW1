@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 #fade {
   position: fixed;
   top: 0;

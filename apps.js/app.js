@@ -2,7 +2,7 @@ let list = [];
 let idButton = document.querySelector("#button");
 let idInput = document.querySelector("#input");
 let listContainer = document.querySelector("#list");
-let progress = document.querySelector(".progress")
+let progress = document.querySelector(".progress");
 
 idButton.addEventListener("click", adiciona);
 
@@ -13,37 +13,40 @@ idInput.addEventListener("keypress", (event) => {
 });
 
 function adiciona() {
+    let tarefa = idInput.value.trim();
+    if (!tarefa) return; // Não adicionar tarefas vazias
+
     let item = {
         id: list.length + 1,
-        tarefa: idInput.value.trim(),
+        tarefa,
         feita: "",
-    }
-    if (item) {
-        list.push(item);
-        atualizarLista();
-        idInput.value = "";
-        selecionados();
-    }
+    };
+    list.push(item);
+    atualizarLista();
+    idInput.value = "";
+    selecionados();
 }
 
 function atualizarLista() {
-    listContainer.innerHTML = list.map((item) => `
-            <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
-              <div class="flex items-center gap-2">
+    listContainer.innerHTML = list
+        .map(
+            (item) => `
+        <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
+            <div class="flex items-center gap-2">
                 <div>
-                <input type="checkbox" name ="itens" class="caixa" ${item.feita} >
+                    <input type="checkbox" name="itens" class="caixa" ${item.feita}>
                 </div>
                 <div class="item truncate max-w-xs">${item.tarefa}</div>
-              </div>
-              <div class="flex items-center gap-2">
+            </div>
+            <div class="flex items-center gap-2">
                 <img class="editar w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
                 <img class="delete w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
-              </div>
-            </li>
-        `)
+            </div>
+        </li>`
+        )
         .join("");
 
-    // editar e deletar e caixa
+    // Eventos de edição, exclusão e checkbox
     document.querySelectorAll(".editar").forEach((button) => {
         button.addEventListener("click", () => edita(button.dataset.index));
     });
@@ -52,33 +55,36 @@ function atualizarLista() {
         button.addEventListener("click", () => deleta(button.dataset.index));
     });
 
-    document.querySelectorAll(".caixa").forEach((button) => {
-        button.addEventListener("click", () => selecionados(button.dataset.index));
+    document.querySelectorAll(".caixa").forEach((button, i) => {
+        button.addEventListener("click", () => selecionados());
     });
+
+    selecionados(); // Atualizar o progresso sempre que a lista mudar
 }
 
 function edita(index) {
-    index--; // Ajustar para o índice correto
+    index--; // Ajustar para índice baseado em 0
 
-    // Criar elementos HTML diretamente no DOM
     const listItem = document.querySelectorAll("li")[index];
     listItem.innerHTML = `
         <div class="flex min-w-max">
-            <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center" value="">
+            <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center" value="${list[index].tarefa}">
             <button id="buttonNovo" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">Salvar</button>
         </div>`;
 
-    // Adicionar evento ao botão "Salvar"
+    const inputNovo = document.getElementById("inputNovo");
+    inputNovo.focus(); // Focar automaticamente no input
+    inputNovo.setSelectionRange(inputNovo.value.length, inputNovo.value.length); // Posicionar o cursor no final
+
     document.getElementById("buttonNovo").addEventListener("click", () => {
-        const novoValor = document.getElementById("inputNovo").value.trim();
+        const novoValor = inputNovo.value.trim();
         if (novoValor) {
-            list[index].tarefa = novoValor; // Atualizar o valor da tarefa na lista
-            atualizarLista(); // Re-renderizar a lista
+            list[index].tarefa = novoValor;
+            atualizarLista();
         }
     });
 
-    // Permitir salvar ao pressionar Enter
-    document.getElementById("inputNovo").addEventListener("keypress", (event) => {
+    inputNovo.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             const novoValor = event.target.value.trim();
             if (novoValor) {
@@ -91,23 +97,23 @@ function edita(index) {
 
 
 function deleta(index) {
-    index--
+    index--; // Ajustar índice
     list.splice(index, 1);
-    atualizarLista();
-    selecionados();
+    atualizarLista(); // Re-renderizar lista
 }
 
 function selecionados() {
-    let caixa = document.getElementsByName("itens")
+    let caixa = document.getElementsByName("itens");
+    let concluidas = 0;
 
-    for (i = 0, v = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         if (caixa[i].checked) {
-            v += 1;
-            progress.innerHTML = `${v}/${list.length} tarefas concluídas`;
+            concluidas++;
             list[i].feita = "checked";
         } else {
-            progress.innerHTML = `${v}/${list.length} tarefas concluídas`;
             list[i].feita = "";
         }
     }
+
+    progress.innerHTML = `<progress value="${concluidas}" max="${list.length}"> <p>HELLO WOLRD</p> </progress>`;
 }
