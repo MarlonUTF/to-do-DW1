@@ -4,6 +4,8 @@ let idInput = document.querySelector("#input");
 let listContainer = document.querySelector("#list");
 let progress = document.querySelector(".progress");
 
+const jsConfetti = new JSConfetti();
+
 idButton.addEventListener("click", adiciona);
 
 idInput.addEventListener("keypress", (event) => {
@@ -95,7 +97,6 @@ function edita(index) {
     });
 }
 
-
 function deleta(index) {
     index--; // Ajustar índice
     list.splice(index, 1);
@@ -106,6 +107,7 @@ function selecionados() {
     let caixa = document.getElementsByName("itens");
     let concluidas = 0;
 
+    // Contar as tarefas concluídas
     for (let i = 0; i < list.length; i++) {
         if (caixa[i].checked) {
             concluidas++;
@@ -115,5 +117,11 @@ function selecionados() {
         }
     }
 
-    progress.innerHTML = `<progress value="${concluidas}" max="${list.length}"> <p>HELLO WOLRD</p> </progress>`;
+    // Atualizar a barra de progresso
+    progress.innerHTML = `<progress class="dark:bg-gray-700" value="${concluidas}" max="${list.length}"></progress>`;
+
+    // Se todas as tarefas forem concluídas, exibe o efeito de confete
+    if (concluidas === list.length && list.length > 0) {
+        jsConfetti.addConfetti(); // Chama o efeito de confete
+    }
 }

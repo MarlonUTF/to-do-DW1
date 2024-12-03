@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js" defer></script>
     <script src="apps.js/app.js" defer></script>
     <script src="apps.js/modal.js" defer></script>
     <script src="apps.js/tema.js" defer></script>
@@ -11,93 +12,83 @@
     <title>To-do List</title>
 </head>
 <body class="bg-cyan-600 dark:bg-gray-900 flex items-center justify-center  min-h-screen min-w-screen p-10">
-
-    <div class="container bg-white dark:bg-gray-500 min-w-full min-h-full rounded-xl p-6">
-       
-        <header class="flex items-center justify-between">
-            <h1>Lista de Tarefas</h1>
-            <div class="modo p-1 w-10 flex items-center justify-center bg-gray-200 rounded-full cursor-pointer">
-                <img id="theme-icon" src="recursos/img/lightMode.svg" class="w-6 h-6">
+  <div class="container bg-white dark:bg-gray-500 min-w-full min-h-full rounded-xl p-6">
+     <canvas id="confetti"></canvas>
+      <header class="flex items-center justify-between">
+          <h1>Lista de Tarefas</h1>
+          <div class="modo p-1 w-10 flex items-center justify-center bg-gray-200 rounded-full cursor-pointer">
+              <img id="theme-icon" src="recursos/img/lightMode.svg" class="w-6 h-6">
+          </div>
+      </header>
+      <div class="flex min-w-max">
+          <input type="text" id="input" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center">
+          <button type="submit" id="button" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
+      </div>
+      <ul id="list" class="min-w-max h-96 mx-3 overflow-auto">
+          <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-3 gap-2">
+            <div class="flex items-center gap-2">
+              <img src="/recursos/img/checkBoxVazia.svg">
+              <div class="item truncate max-w-xs">${item}</div>
             </div>
-        </header>
-
-        <div class="flex min-w-max">
-            <input type="text" id="input" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center">
-            <button type="submit" id="button" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">+</button>
-        </div>
-
-        <ul id="list" class="min-w-max h-96 mx-3 overflow-auto">
-            <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-3 gap-2">
-              <div class="flex items-center gap-2">
-                <img src="/recursos/img/checkBoxVazia.svg">
-                <div class="item truncate max-w-xs">${item}</div>
-              </div>
-              <div class="flex items-center gap-2">
-                <img class="editar w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/editar.svg" alt="Editar">
-                <img class="delete w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/deletar.svg" alt="Deletar">
-              </div>
-            </li>
-        </ul>
-
-        <div class="progress">
-          
-        </div>
-
+            <div class="flex items-center gap-2">
+              <img class="editar w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/editar.svg" alt="Editar">
+              <img class="delete w-6 h-6 cursor-pointer" data-index="${index}" src="/recursos/img/deletar.svg" alt="Deletar">
+            </div>
+          </li>
+      </ul>
+      <div class="progress">
+        
+      </div>
+  </div>
+  
+  <div id="fade" class="hide"></div>
+  <div id="modal" class="hide">
+    <div class="modal-header flex items-center align-center ">
+        <h2>Desenvolvimento web 1</h2>
+        <button id="close-modal" class="text-white bg-red-600 p-2 rounded-xl">Fechar</button>
+    </div>
+    <div class="modal-body flex">
+      <!-- <h3>Alunos:</h3>
+      <div class="alunos">
+          <p class="flex items-center justify-evenly">Marlon Sidnei Santos (44) 99956-5271 <a href="https://wa.me/5544999565271?text=Ol%C3%A1%2C%20Marlon!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
+          <p class="flex items-center justify-evenly">Ryan Tomaz Talavieira (44) 99970-7623 <a href="https://wa.me/5544999707623?text=Ol%C3%A1%2C%20Ryan!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
+          <p class="flex items-center justify-evenly">Talisson Sidnei Santos (44) 99893-7610 <a href="https://wa.me/5544998937610?text=Ol%C3%A1%2C%20Talisson!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
+      </div> -->
+      <div class="xl:w-1/2 xl:mx-4">
+        <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Alunos</h1>
+        
+        <p class="max-w-2xl mt-4 text-gray-500 dark:text-gray-300">
+          <p>Alunos do segundo ano do Curso Técnico Integrado em Informática para Internet 2024</p>
+        </p>
     </div>
     
-    <div id="fade" class="hide"></div>
-    <div id="modal" class="hide">
-      <div class="modal-header flex items-center align-center ">
-          <h2>Desenvolvimento web 1</h2>
-          <button id="close-modal" class="text-white bg-red-600 p-2 rounded-xl">Fechar</button>
-      </div>
-      <div class="modal-body flex">
-        <!-- <h3>Alunos:</h3>
-        <div class="alunos">
-            <p class="flex items-center justify-evenly">Marlon Sidnei Santos (44) 99956-5271 <a href="https://wa.me/5544999565271?text=Ol%C3%A1%2C%20Marlon!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
-            <p class="flex items-center justify-evenly">Ryan Tomaz Talavieira (44) 99970-7623 <a href="https://wa.me/5544999707623?text=Ol%C3%A1%2C%20Ryan!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
-            <p class="flex items-center justify-evenly">Talisson Sidnei Santos (44) 99893-7610 <a href="https://wa.me/5544998937610?text=Ol%C3%A1%2C%20Talisson!%20Encontrei%20seu%20contado%20na%20to-do%20list%20de%20DW1" target="_blank"><img src="recursos/img/wpp.svg"></a></p>
-        </div> -->
-
-        <div class="xl:w-1/2 xl:mx-4">
-          <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Alunos</h1>
-          
-          <p class="max-w-2xl mt-4 text-gray-500 dark:text-gray-300">
-            <p>Alunos do segundo ano do Curso Técnico Integrado em Informática para Internet 2024</p>
-          </p>
-      </div>
-      
-      <div class="flex flex-wrap gap-8 mt-8 xl:mt-0 xl:mx-4 xl:w-1/2">
-          <div class="w-full md:w-1/2">
-              <img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
-              
-              <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Marlon Sidnei Santos</h1>
-              
-              <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Front-end</p>
-
-              <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">(44) 99893-7610</p>
-          </div>
-          <div class="w-full md:w-1/2">
-              <img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
-              
-              <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Ryan Tomaz Talavieira</h1>
-              
-              <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Back-end</p>
-
-              <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">(44) 99970-7623</p>
-          </div>
-          <div class="w-full md:w-1/2">
-              <img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
-              
-              <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Talisson Sidnei Santos</h1>
-              
-              <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Back-end</p>
-
-              <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">(44) 99893-7610</p>
-          </div>
-        </div>      
-      </div>
+    <div class="flex flex-wrap gap-8 mt-8 xl:mt-0 xl:mx-4 xl:w-1/2">
+        <div class="w-full md:w-1/2">
+            <img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
+            
+            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Marlon Sidnei Santos</h1>
+            
+            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Front-end</p>
+            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">(44) 99893-7610</p>
+        </div>
+        <div class="w-full md:w-1/2">
+            <img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
+            
+            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Ryan Tomaz Talavieira</h1>
+            
+            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Back-end</p>
+            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">(44) 99970-7623</p>
+        </div>
+        <div class="w-full md:w-1/2">
+            <img class="object-cover rounded-xl h-64 w-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
+            
+            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Talisson Sidnei Santos</h1>
+            
+            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Back-end</p>
+            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">(44) 99893-7610</p>
+        </div>
+      </div>      
     </div>
-
+  </div>
 </body>
 </html>
