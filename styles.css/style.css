@@ -132,16 +132,18 @@ li{
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 90vw;
+  width: 85vw;
   max-width: 90%;
 
   background-color: var(--cor1);
   color: var(--cor2);
-  height: 80vh;
+  height: 83vh;
   background-color: #fff;
   padding: 1.2rem;
   border-radius: 0.5rem;
   z-index: 10;
+
+  color: black;
 }
 
 #fade, #modal {
@@ -171,13 +173,13 @@ li{
 
 .modal-header .modal-title{
   position: fixed;
-  left: 90vh;
+  left: 80vh;
 }
 
 .modal-header #close-modal{
   position: fixed;
-  top: 6vh;
-  left: 183vh;
+  top: 3.5vh;
+  left: 173vh;
   width: 10px;
   height: 10px;
 }
@@ -216,11 +218,13 @@ li{
 
 .modal-body .profile-name, .profile-phone{
   text-align: center;
+  color: black;
 }
 
 .modal-body a{
   color: black;
   text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .modal-body a:hover{
