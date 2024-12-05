@@ -9,13 +9,13 @@
   --white: white;
   --dark: hsl(0, 0%, 20%);
   --cor1: white;
-  --cor2: #5ef15ec5;
-  --cor3: #228322;
+  --cor2: #14342B;
+  --cor3: #049F90;
 
   /* Modo escuro */
   --cor1d: black;
-  --cor2d: #f39e60;
-  --cor3d: #fc791e;
+  --cor2d: #FF5CA3;
+  --cor3d: #E00061;
 }
 
 [data-theme="dark"] {
@@ -307,33 +307,73 @@ li{
   cursor: pointer;
 }
 
-/* Estilo para a barra de progresso */
-.progress-container {
-  width: 100%;
-  max-width: 400px;
-  margin: 1rem auto;
+/* Contêiner da barra de progresso */
+.progress{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px; /* Limita a largura máxima, pode ser ajustado conforme necessário */
+  margin: 20px auto; /* Centraliza o contêiner */
+  background-color: #f3f4f6; /* Cor de fundo sutil */
+  border-radius: 25px; /* Bordas arredondadas */
 }
 
+/* Barra de progresso */
 progress {
   width: 70vw;
-  height: 33px;
-  border-radius: 50px;
-  margin-bottom: 20px;
+  height: 25px;
+  -webkit-appearance: none; /* Remove estilo padrão no Safari */
+  appearance: none;
+  border-radius: 20px;
+  background-color: #e0e0e0; /* Cor de fundo da barra de progresso */
+  z-index: 1; /* Barra de progresso tem z-index 1 */
 }
 
 progress::-webkit-progress-bar {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 50px;
+  background-color: #e0e0e0; /* Cor do fundo da barra de progresso */
+  border-radius: 20px;
 }
 
 progress::-webkit-progress-value {
-  background: var(--cor3);
-  border-radius: 50px;
+  background-color: #4caf50; /* Cor do progresso (verde) */
+  border-radius: 20px;
+  transition: width 0.5s ease; /* Transição suave no preenchimento */
 }
 
 progress::-moz-progress-bar {
-  background: var(--cor3);
-  border-radius: 50px;
+  background-color: #4caf50; /* Cor do progresso (verde) */
+  border-radius: 20px;
+  transition: width 0.5s ease; /* Transição suave no preenchimento */
+}
+
+/* Estilo do texto da porcentagem */
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza o texto */
+  font-size: 16px;
+  font-weight: bold;
+  color: white; /* Cor branca do texto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra no texto para melhorar a visibilidade */
+  z-index: 2; /* O texto da porcentagem tem z-index maior que a barra de progresso */
+}
+
+.inputNovo{
+  border: none;
+  height: 30px;
+  border-radius: 15px;
+  padding-left: 8px;
+}
+
+.buttonNovo{
+  border: none;
+  height: 30px;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #e9d415;
 }
 
 @media (max-width: 767px) {

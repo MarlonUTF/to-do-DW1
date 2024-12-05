@@ -45,13 +45,13 @@ function atualizarLista() {
     <li class="${itemClass}">
         <div class="divCheck">
             <div>
-                <input type="checkbox" name="itens" class="caixa" ${item.feita ? 'checked' : ''}>
+                <input type="checkbox" name="itens" class="caixa" ${item.feita ? 'checked' : ''} data-id="${item.id}">
             </div>
             <div>${item.tarefa}</div>
         </div>
         <div class="actions">
-            <img class="editar" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
-            <img class="delete" data-index="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
+            <img class="editar" data-id="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
+            <img class="delete" data-id="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
         </div>
     </li>`;
         }
@@ -60,11 +60,11 @@ function atualizarLista() {
 
     // Eventos de edição, exclusão e checkbox
     document.querySelectorAll(".editar").forEach((button) => {
-        button.addEventListener("click", () => edita(button.dataset.index));
+        button.addEventListener("click", () => edita(button.dataset.id));
     });
 
     document.querySelectorAll(".delete").forEach((button) => {
-        button.addEventListener("click", () => deleta(button.dataset.index));
+        button.addEventListener("click", () => deleta(button.dataset.id));
     });
 
     document.querySelectorAll(".caixa").forEach((button) => {
@@ -74,14 +74,13 @@ function atualizarLista() {
     selecionados(); // Atualizar o progresso sempre que a lista mudar
 }
 
-function edita(index) {
-    index--; // Ajustar para índice baseado em 0
-
+function edita(id) {
+    const index = list.findIndex(item => item.id === parseInt(id)); // Localiza o índice correto
     const listItem = document.querySelectorAll("li")[index];
     listItem.innerHTML = `
         <div>
-            <input type="text" id="inputNovo" value="${list[index].tarefa}">
-            <button id="buttonNovo">Salvar</button>
+            <input type="text" id="inputNovo" class="inputNovo" value="${list[index].tarefa}">
+            <button id="buttonNovo" class="buttonNovo">Salvar</button>
         </div>`;
 
     const inputNovo = document.getElementById("inputNovo");
@@ -109,10 +108,9 @@ function edita(index) {
     });
 }
 
-function deleta(index) {
-    const tarefaId = parseInt(index); // Garantir que o id seja um número
+function deleta(id) {
     // Remover item da lista usando o ID único
-    list = list.filter(item => item.id !== tarefaId);
+    list = list.filter(item => item.id !== parseInt(id));
     atualizarLista(); // Re-renderizar a lista
     salvarNoLocalStorage(); // Salvar no localStorage após a exclusão
 }
@@ -122,30 +120,32 @@ function selecionados() {
     let concluidas = 0;
 
     // Atualizar estilização diretamente sem recriar a lista inteira
-    for (let i = 0; i < list.length; i++) {
+    list.forEach((item, i) => {
         const li = listContainer.children[i];
         const itemText = li.querySelector("div");  // Seleciona o texto do item
         if (caixa[i].checked) {
             concluidas++;
-            list[i].feita = true; // Atualiza o estado como verdadeiro
+            item.feita = true; // Atualiza o estado como verdadeiro
             li.classList.add("checked");
             li.classList.remove("pending");
             itemText.style.textDecoration = "line-through";  // Aplica o riscado
         } else {
-            list[i].feita = false; // Atualiza o estado como falso
+            item.feita = false; // Atualiza o estado como falso
             li.classList.remove("checked");
             li.classList.add("pending");
             itemText.style.textDecoration = "none";  // Remove o riscado
         }
-    }
+    });
 
     // Atualizar a barra de progresso
-    progress.innerHTML = `<progress value="${concluidas}" max="${list.length}"></progress>`;
+    progress.innerHTML = `<progress value="${concluidas}" max="${list.length}"></progress> <span id="progressText" class="progress-text">${Math.round((concluidas / list.length) * 100)}%</span>`;
 
     // Efeito de confete se todas forem concluídas
     if (concluidas === list.length && list.length > 0) {
         jsConfetti.addConfetti();
     }
+
+    salvarNoLocalStorage();
 }
 
 function salvarNoLocalStorage() {
