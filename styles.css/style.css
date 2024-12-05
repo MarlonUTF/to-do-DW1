@@ -234,8 +234,8 @@ li{
 .modal-body a:hover{
   text-decoration: underline;
   text-decoration-color: green;
+  text-decoration-thickness: 10px;
   transition: .1s;
-
 }
 
 #confetti {
