@@ -21,8 +21,10 @@ function adiciona() {
     let tarefa = idInput.value.trim();
     if (!tarefa) return; // Não adicionar tarefas vazias
 
+    let id = list.length > 0 ? Math.max(...list.map(item => item.id)) + 1 : 1; // Garante o ID único
+
     let item = {
-        id: list.length + 1,
+        id: id,
         tarefa,
         feita: false, // Valor booleano indicando se a tarefa foi concluída
     };
@@ -33,56 +35,28 @@ function adiciona() {
 }
 
 function atualizarLista() {
-    // listContainer.innerHTML = list
-    //     .map((item) =>
-    //         item.feita
-    //             ? `        
-    //     <li class="flex items-center justify-between border-2 border-green-500 bg-green-500 rounded-xl p-2 gap-2">
-    //         <div class="flex items-center gap-2">
-    //             <div>
-    //                 <input type="checkbox" name="itens" class="caixa" checked data-index="${item.id}">
-    //             </div>
-    //             <div class="item truncate max-w-xs font-bold text-green-800 line-through">${item.tarefa}</div>
-    //         </div>
-    //         <div class="flex items-center gap-2">
-    //             <img class="editar w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
-    //             <img class="delete w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
-    //         </div>
-    //     </li>`
-    //             : `
-    //     <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
-    //         <div class="flex items-center gap-2">
-    //             <div>
-    //                 <input type="checkbox" name="itens" class="caixa" data-index="${item.id}">
-    //             </div>
-    //             <div class="item truncate max-w-xs">${item.tarefa}</div>
-    //         </div>
-    //         <div class="flex items-center gap-2">
-    //             <img class="editar w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
-    //             <img class="delete w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
-    //         </div>
-    //     </li>`
-    //     )
-    //     .join("");
-
     listContainer.innerHTML = list
     .map(
-        (item) => `
-    <li class="flex items-center justify-between border-2 border-gray-500 rounded-xl p-2 gap-2">
-        <div class="flex items-center gap-2">
+        (item) => {
+            // Determina a classe a ser usada (concluída ou pendente)
+            const itemClass = item.feita ? 'task-item checked' : 'task-item pending';
+            
+            return `
+    <li class="${itemClass}">
+        <div class="divCheck">
             <div>
                 <input type="checkbox" name="itens" class="caixa" ${item.feita ? 'checked' : ''}>
             </div>
-            <div class="item truncate max-w-xs font-xl">${item.tarefa}</div>
+            <div>${item.tarefa}</div>
         </div>
-        <div class="flex items-center gap-2">
-            <img class="editar w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
-            <img class="delete w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
+        <div class="actions">
+            <img class="editar" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
+            <img class="delete" data-index="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
         </div>
-    </li>`
+    </li>`;
+        }
     )
     .join("");
-
 
     // Eventos de edição, exclusão e checkbox
     document.querySelectorAll(".editar").forEach((button) => {
@@ -105,9 +79,9 @@ function edita(index) {
 
     const listItem = document.querySelectorAll("li")[index];
     listItem.innerHTML = `
-        <div class="flex min-w-max">
-            <input type="text" id="inputNovo" class="h-8 grow border-2 border-gray-500 rounded-xl mx-3 p-2 flex items-center" value="${list[index].tarefa}">
-            <button id="buttonNovo" class="h-8 flex items-center justify-center bg-green-700 px-6 rounded-xl mr-3">Salvar</button>
+        <div>
+            <input type="text" id="inputNovo" value="${list[index].tarefa}">
+            <button id="buttonNovo">Salvar</button>
         </div>`;
 
     const inputNovo = document.getElementById("inputNovo");
@@ -150,17 +124,17 @@ function selecionados() {
     // Atualizar estilização diretamente sem recriar a lista inteira
     for (let i = 0; i < list.length; i++) {
         const li = listContainer.children[i];
-        const itemText = li.querySelector(".item");  // Seleciona o texto do item
+        const itemText = li.querySelector("div");  // Seleciona o texto do item corretamente
         if (caixa[i].checked) {
             concluidas++;
-            list[i].feita = "checked";
-            li.classList.add("border-green-500", "bg-green-500");
-            li.classList.remove("border-gray-500");
+            list[i].feita = true; // Atualiza o estado como verdadeiro
+            li.classList.add("checked");
+            li.classList.remove("pending");
             itemText.style.textDecoration = "line-through";  // Aplica o riscado
         } else {
-            list[i].feita = "";
-            li.classList.remove("border-green-500", "bg-green-500");
-            li.classList.add("border-gray-500");
+            list[i].feita = false; // Atualiza o estado como falso
+            li.classList.remove("checked");
+            li.classList.add("pending");
             itemText.style.textDecoration = "none";  // Remove o riscado
         }
     }
@@ -175,13 +149,21 @@ function selecionados() {
 }
 
 function salvarNoLocalStorage() {
-    localStorage.setItem("tarefaLista", JSON.stringify(list));
+    try {
+        localStorage.setItem("tarefaLista", JSON.stringify(list));
+    } catch (error) {
+        console.error("Erro ao salvar no localStorage:", error);
+    }
 }
 
 function carregarDoLocalStorage() {
-    const tarefasSalvas = localStorage.getItem("tarefaLista");
-    if (tarefasSalvas) {
-        list = JSON.parse(tarefasSalvas);
-        atualizarLista();
+    try {
+        const tarefasSalvas = localStorage.getItem("tarefaLista");
+        if (tarefasSalvas) {
+            list = JSON.parse(tarefasSalvas);
+            atualizarLista();
+        }
+    } catch (error) {
+        console.error("Erro ao carregar do localStorage:", error);
     }
 }

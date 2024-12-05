@@ -1,24 +1,26 @@
 const themeToggle = document.querySelector(".modo");
 const themeIcon = document.querySelector("#theme-icon");
+const themeSystem = localStorage.getItem('themeSystem') || 'light';
 
 // Verifica a preferência do tema no localStorage ao carregar a página
 if (localStorage.getItem("theme") === "dark") {
-  document.documentElement.classList.add("dark");
-  themeIcon.src = "recursos/img/darkMode.svg";
+  document.documentElement.setAttribute("data-theme", "dark");
+  themeIcon.src = "recursos/img/darkMode.svg"; // Ícone para o modo escuro
 } else {
-  themeIcon.src = "recursos/img/lightMode.svg";
+  themeIcon.src = "recursos/img/lightMode.svg"; // Ícone para o modo claro
 }
 
 themeToggle.addEventListener("click", () => {
-  // Alterna a classe 'dark' no HTML
-  document.documentElement.classList.toggle("dark");
+  let currentTheme = document.documentElement.getAttribute("data-theme");
 
-  // Atualiza o ícone e salva a preferência no localStorage
-  if (document.documentElement.classList.contains("dark")) {
-    themeIcon.src = "recursos/img/darkMode.svg";
-    localStorage.setItem("theme", "dark");
-  } else {
-    themeIcon.src = "recursos/img/lightMode.svg";
+  // Alterna o tema
+  if (currentTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "light");
+    themeIcon.src = "recursos/img/lightMode.svg"; // Ícone para o modo claro
     localStorage.setItem("theme", "light");
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
+    themeIcon.src = "recursos/img/darkMode.svg"; // Ícone para o modo escuro
+    localStorage.setItem("theme", "dark");
   }
 });
