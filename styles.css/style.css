@@ -187,10 +187,10 @@ li{
 }
 
 .modal-body p {
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
 }
 
-.modal-body  .profiles{
+.modal-body .profiles{
   display: flex;
   justify-content: center;
   gap: 7vh;
@@ -210,11 +210,10 @@ li{
 
 .modal-body .profile-box{
   width: 20vw;
-  height: 22vh;
+  height: 20vh;
 
   display: flex;
   flex-direction: column;
-  align-items: normal;
   justify-content: center;
 }
 
