@@ -177,7 +177,7 @@ li{
 }
 
 .modal-header #close-modal{
-  position: fixed;
+  position: absolute;
   top: 3.5vh;
   left: 173vh;
   width: 10px;
@@ -229,14 +229,10 @@ li{
 }
 
 .modal-body a:hover{
-  text-shadow: -2px 0 5px rgba(0,0,0,0.5);
   text-decoration: underline;
   text-decoration-color: green;
-  text-decoration-thickness: 10px;
-  text-underline-offset: -4px;
-  text-decoration-skip-ink: none;
+  transition: .1s;
 
-  transition:  0.3s ;
 }
 
 #confetti {
