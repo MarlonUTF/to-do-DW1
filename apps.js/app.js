@@ -1,4 +1,4 @@
-let list = [];
+let list = []; 
 let idButton = document.querySelector("#button");
 let idInput = document.querySelector("#input");
 let listContainer = document.querySelector("#list");
@@ -124,7 +124,7 @@ function selecionados() {
     // Atualizar estilização diretamente sem recriar a lista inteira
     for (let i = 0; i < list.length; i++) {
         const li = listContainer.children[i];
-        const itemText = li.querySelector("div");  // Seleciona o texto do item corretamente
+        const itemText = li.querySelector("div");  // Seleciona o texto do item
         if (caixa[i].checked) {
             concluidas++;
             list[i].feita = true; // Atualiza o estado como verdadeiro
@@ -140,7 +140,7 @@ function selecionados() {
     }
 
     // Atualizar a barra de progresso
-    progress.innerHTML = `<progress class="dark:bg-gray-700" value="${concluidas}" max="${list.length}"></progress>`;
+    progress.innerHTML = `<progress value="${concluidas}" max="${list.length}"></progress>`;
 
     // Efeito de confete se todas forem concluídas
     if (concluidas === list.length && list.length > 0) {
@@ -161,7 +161,20 @@ function carregarDoLocalStorage() {
         const tarefasSalvas = localStorage.getItem("tarefaLista");
         if (tarefasSalvas) {
             list = JSON.parse(tarefasSalvas);
+            // Atualizar a lista após carregar do localStorage
             atualizarLista();
+            // Certificar-se de que os checkboxes estejam corretamente marcados
+            list.forEach((item, index) => {
+                const checkbox = document.querySelectorAll(".caixa")[index];
+                if (item.feita) {
+                    checkbox.checked = true;
+                    const li = listContainer.children[index];
+                    const itemText = li.querySelector("div");  // Seleciona o texto do item
+                    li.classList.add("checked");
+                    li.classList.remove("pending");
+                    itemText.style.textDecoration = "line-through";  // Aplica o riscado
+                }
+            });
         }
     } catch (error) {
         console.error("Erro ao carregar do localStorage:", error);
