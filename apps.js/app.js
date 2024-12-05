@@ -180,3 +180,4 @@ function carregarDoLocalStorage() {
         console.error("Erro ao carregar do localStorage:", error);
     }
 }
+

@@ -225,10 +225,18 @@ li{
   color: black;
   text-decoration: none;
   font-size: 1.2rem;
+  
 }
 
 .modal-body a:hover{
-  color: rgb(2, 86, 2);
+  text-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  text-decoration: underline;
+  text-decoration-color: green;
+  text-decoration-thickness: 10px;
+  text-underline-offset: -4px;
+  text-decoration-skip-ink: none;
+
+  transition:  0.3s ;
 }
 
 #confetti {
