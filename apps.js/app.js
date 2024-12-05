@@ -73,7 +73,7 @@ function atualizarLista() {
             <div>
                 <input type="checkbox" name="itens" class="caixa" ${item.feita ? 'checked' : ''}>
             </div>
-            <div class="item truncate max-w-xs">${item.tarefa}</div>
+            <div class="item truncate max-w-xs font-xl">${item.tarefa}</div>
         </div>
         <div class="flex items-center gap-2">
             <img class="editar w-6 h-6 cursor-pointer" data-index="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
