@@ -179,8 +179,8 @@ li{
 .modal-header #close-modal{
   display: flex;
   justify-content: space-evenly;
-  width: 10px;
-  height: 10px;
+  width: 2.5vw;
+  height: 2.5vh;
 }
 
 .modal-body p {
