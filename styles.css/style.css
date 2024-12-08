@@ -408,4 +408,97 @@ progress::-moz-progress-bar {
     border: 2px solid var(--dark);
     border-radius: 15px;
   } */
+
+  #modal {
+    position: fixed;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    max-width: 90%;
+  
+    background-color: var(--cor1);
+    color: var(--cor2);
+    height: 100%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    z-index: 10;
+  
+    color: black;
+  }
+  
+  #modal.hide {
+    top: 0;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+  
+    font-size: 1rem;
+  }
+  
+  .modal-header .modal-title{
+    position: normal;
+    left: 80vh;
+    font-size: 1.7rem;
+  }
+  
+  .modal-header #close-modal{
+    display: flex;
+    justify-content: space-evenly;
+    width: 2.5vw;
+    height: 2.5vh;
+  }
+  
+  .modal-body .profiles{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-body .profile{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-body .profile-image{
+    width: 60vw;
+    height: 40vh;
+    border-radius: 5%;
+  }
+  
+  .modal-body .profile-box{
+    width: 80vw;
+    height: 22vh;
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-bottom: -6rem;
+  }
+  
+  .modal-body .profile-name, .profile-phone{
+    text-align: center;
+    color: black;
+  
+    font-size: 2rem;
+  }
+  
+  .modal-body a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.3rem;
+    
+  }
+  
+  .modal-body a:hover{
+    text-decoration: underline;
+    text-decoration-color: green;
+    text-decoration-thickness: 10px;
+    transition: .1s;
+  }
 }
