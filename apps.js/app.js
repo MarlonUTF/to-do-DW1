@@ -50,8 +50,8 @@ function atualizarLista() {
             <div>${item.tarefa}</div>
         </div>
         <div class="actions">
-            <img class="editar" data-id="${item.id}" src="/recursos/img/editar.svg" alt="Editar">
-            <img class="delete" data-id="${item.id}" src="/recursos/img/deletar.svg" alt="Deletar">
+            <img class="editar" data-id="${item.id}" src="recursos/img/editar.svg" alt="Editar">
+            <img class="delete" data-id="${item.id}" src="recursos/img/deletar.svg" alt="Deletar">
         </div>
     </li>`;
         }
