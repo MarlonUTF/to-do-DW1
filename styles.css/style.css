@@ -1,5 +1,4 @@
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -22,8 +21,8 @@
   --white: #333;
   --dark: white;
   --cor1: var(--cor1d);
-  --cor2: var(--cor2d);
-  --cor3: var(--cor3d);
+  --cor3: var(--cor2d);
+  --cor2: var(--cor3d);
 }
 
 .modo {
@@ -50,32 +49,32 @@ body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-h1{
+h1 {
   margin-bottom: 40px;
   margin-top: 60px;
 }
 
-li{
+li {
   margin-bottom: 10px;
 }
 
-.divCheck{
+.divCheck {
   display: flex;
   align-items: center;
 }
 
-.divCheck div{
+.divCheck div {
   margin: 0 5px 0 5px;
 }
 
-.input-container{
+.input-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,7 +82,7 @@ li{
   margin-bottom: 20px;
 }
 
-.input{
+.input {
   width: 60vw;
   max-width: 60vw;
   align-items: center;
@@ -94,7 +93,7 @@ li{
   border: 1px solid var(--dark);
 }
 
-.button{
+.button {
   width: calc(10vw - 10px);
   min-width: 40px;
   margin-left: 10px;
@@ -106,11 +105,12 @@ li{
   color: var(--white);
 }
 
-.jumbotron .btn:focus{
+.jumbotron .btn:focus {
   outline: thin dotted;
   outline: 0px auto -webkit-focus-ring-color;
   outline-offset: 0px;
 }
+
 .jumbotron:focus {
   outline: thin dotted;
   outline: 0px auto -webkit-focus-ring-color;
@@ -134,7 +134,6 @@ li{
   transform: translate(-50%, -50%);
   width: 85vw;
   max-width: 90%;
-
   background-color: var(--cor1);
   color: var(--cor2);
   height: 83vh;
@@ -142,11 +141,11 @@ li{
   padding: 1.2rem;
   border-radius: 0.5rem;
   z-index: 10;
-
   color: black;
 }
 
-#fade, #modal {
+#fade,
+#modal {
   transition: opacity 0.5s ease-in-out;
   opacity: 1;
   pointer-events: all;
@@ -169,7 +168,6 @@ li{
   border-bottom: 1px solid #ccc;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-
   font-size: 1rem;
 }
 
@@ -183,7 +181,7 @@ li{
   font-size: 1.7rem;
 }
 
-.modal-header #close-modal{
+.modal-header #close-modal {
   display: flex;
   justify-content: space-evenly;
   width: 2.5vw;
@@ -194,48 +192,46 @@ li{
   margin-bottom: 4rem;
 }
 
-.modal-body .profiles{
+.modal-body .profiles {
   display: flex;
   justify-content: center;
   gap: 7vh;
 }
 
-.modal-body .profile{
+.modal-body .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.modal-body .profile-image{
+.modal-body .profile-image {
   width: 20vw;
   height: 40vh;
   border-radius: 5%;
 }
 
-.modal-body .profile-box{
+.modal-body .profile-box {
   width: 20vw;
   height: 20vh;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.modal-body .profile-name, .profile-phone{
+.modal-body .profile-name,
+.profile-phone {
   text-align: center;
   color: black;
-
   font-size: 2rem;
 }
 
-.modal-body a{
+.modal-body a {
   color: black;
   text-decoration: none;
   font-size: 1.3rem;
-  
 }
 
-.modal-body a:hover{
+.modal-body a:hover {
   text-decoration: underline;
   text-decoration-color: green;
   text-decoration-thickness: 10px;
@@ -262,6 +258,7 @@ li{
   padding: 0.5rem;
   gap: 1rem;
   transition: all 0.3s ease;
+  color: white;
 }
 
 .task-item input[type="checkbox"] {
@@ -278,8 +275,8 @@ li{
 
 /* Estilo para tarefas concluídas */
 .task-item.checked {
-  border: 2px solid var(--cor3); /* Verde */
-  background-color: var(--cor3);  /* Verde */
+  border: 2px solid var(--cor2); /* Verde */
+  background-color: var(--cor2); /* Verde */
 }
 
 .task-item.checked .item {
@@ -290,7 +287,13 @@ li{
 /* Estilo para tarefas não concluídas */
 .task-item.pending {
   border: 2px solid #888; /* Cinza */
-  background-color: var(--cor2);
+  /* background-color: var(--cor2); */
+  color: var(--dark);
+  background-color: var(--white);
+}
+
+.task-item.pending svg {
+  color: white; /* Cor do ícone SVG */
 }
 
 .task-item.pending .item {
@@ -310,93 +313,88 @@ li{
   cursor: pointer;
 }
 
+.task-item div {
+  max-width: 100%; /* Permite que o texto ocupe toda a largura disponível */
+  word-wrap: break-word; /* Quebra palavras longas */
+  overflow-wrap: break-word; /* Compatível com navegadores modernos */
+  white-space: normal; /* Permite quebra de linha */
+  word-break: break-word; /* Garante que palavras longas sejam quebradas corretamente */
+}
+
+.textoTarefa {
+  width: 100%; /* Faz o texto ocupar toda a largura disponível */
+}
+
 /* Contêiner da barra de progresso */
-.progress{
+.progress {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 500px; /* Limita a largura máxima, pode ser ajustado conforme necessário */
-  margin: 20px auto; /* Centraliza o contêiner */
-  background-color: #f3f4f6; /* Cor de fundo sutil */
-  border-radius: 25px; /* Bordas arredondadas */
+  margin: 20px auto;
+  background-color: #f3f4f6;
+  border-radius: 25px;
+  width: 70vw; /* Definir a largura da barra */
 }
 
 /* Barra de progresso */
 progress {
-  width: 70vw;
-  height: 25px;
-  -webkit-appearance: none; /* Remove estilo padrão no Safari */
+  width: 100%; /* A barra ocupa 100% da largura do contêiner */
+  height: 30px;
+  -webkit-appearance: none;
   appearance: none;
   border-radius: 20px;
-  background-color: #e0e0e0; /* Cor de fundo da barra de progresso */
-  z-index: 1; /* Barra de progresso tem z-index 1 */
+  background-color: #e0e0e0;
+  z-index: 1; /* A barra tem um índice z menor */
 }
 
+/* Estilo da barra de progresso - Webkit */
 progress::-webkit-progress-bar {
-  background-color: #e0e0e0; /* Cor do fundo da barra de progresso */
+  background-color: #e0e0e0;
   border-radius: 20px;
 }
 
 progress::-webkit-progress-value {
-  background-color: #4caf50; /* Cor do progresso (verde) */
+  background-color: var(--cor3);
   border-radius: 20px;
-  transition: width 0.5s ease; /* Transição suave no preenchimento */
+  transition: width 0.5s ease;
 }
 
+/* Estilo da barra de progresso - Mozilla */
 progress::-moz-progress-bar {
-  background-color: #4caf50; /* Cor do progresso (verde) */
+  background-color: var(--cor3);
   border-radius: 20px;
-  transition: width 0.5s ease; /* Transição suave no preenchimento */
+  transition: width 0.5s ease;
 }
 
-/* Estilo do texto da porcentagem */
+/* Texto da porcentagem no meio da barra */
 .progress-text {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centraliza o texto */
+  transform: translate(-50%, -50%);
   font-size: 16px;
   font-weight: bold;
-  color: white; /* Cor branca do texto */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra no texto para melhorar a visibilidade */
-  z-index: 2; /* O texto da porcentagem tem z-index maior que a barra de progresso */
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  z-index: 2; /* O texto fica sobre a barra de progresso */
 }
 
-.inputNovo{
-  border: none;
-  height: 30px;
-  border-radius: 15px;
-  padding-left: 8px;
-}
-
-.buttonNovo{
-  border: none;
-  height: 30px;
-  border-radius: 15px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: #e9d415;
-}
 
 @media (max-width: 767px) {
-
-  h1{
+  .container {
+    padding: 20px;
+    width: 100%;
     margin: 0;
   }
 
-  .modo{
-    position: static;
-    margin: 0;
-    margin-left: 30px;
+  .input-container {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  header{
-    width: 100vw;
-    height: 25vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .input {
+    width: 100%;
   }
 
   /* .modo {
