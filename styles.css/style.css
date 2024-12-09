@@ -173,6 +173,10 @@ li{
   font-size: 1rem;
 }
 
+.modal-header #DW{
+  font-size: 1.8rem;
+}
+
 .modal-header .modal-title{
   position: fixed;
   left: 80vh;
@@ -411,6 +415,7 @@ progress::-moz-progress-bar {
 
   #modal {
     overflow: auto;
+    overflow-x: hidden;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

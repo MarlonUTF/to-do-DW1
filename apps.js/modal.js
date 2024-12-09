@@ -1,7 +1,7 @@
 const closeModalButton = document.querySelector("#close-modal");
 const modal = document.querySelector("#modal");
 const fade = document.querySelector("#fade");
-const medium = matchMedia(`max-width:767px`);
+const medium = window.matchMedia(`(max-width:767px)`);
 const dw = document.querySelector("#DW");
 
 // const closeModalButton = document.querySelector("#close-modal");
@@ -38,14 +38,11 @@ function showDw(){
   dw.innerHTML = `<h2 id="DW">Desenvolvimento web 1</h2>`
 }
 
-// const changeSize = mql => {
-//   mql.matches
-//   ? hideDw()
-//   : showDw()
-// }
+const changeSize = mql => {
+  medium.matches
+  ? hideDw()
+  : showDw()
+}
 
-// medium.addListener(changeSize)
-// changeSize(medium)
-
-medium.addEventListener("load",showDw());
-medium.addEventListener("resize", hideDw());
+medium.addListener(changeSize)
+changeSize(medium)
