@@ -4,16 +4,6 @@ const fade = document.querySelector("#fade");
 const medium = window.matchMedia(`(max-width:767px)`);
 const dw = document.querySelector("#DW");
 
-// const closeModalButton = document.querySelector("#close-modal");
-// const modal = document.querySelector("#modal");
-// const dw = document.querySelector("#DW");
-// let numero = document.querySelectorAll("a").forEach((a) => { a.style.color = "white" });
-// let nome = document.querySelectorAll(".profile-name").forEach((a) => { a.style.color = "white" });
-// dw.style.color = "#ffffff";
-// closeModalButton.style.fill = "#ffffff";
-// modal.style.backgroundColor = "#000000";
-
-
 document.addEventListener("keydown", function (event) {
   if (event.ctrlKey && event.key.toLowerCase() === "h") {
     event.preventDefault();
