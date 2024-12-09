@@ -78,7 +78,7 @@ function edita(id) {
     const index = list.findIndex(item => item.id === parseInt(id)); // Localiza o índice correto
     const listItem = document.querySelectorAll("li")[index];
     listItem.innerHTML = `
-        <div>
+        <div class="editNovo">
             <input type="text" id="inputNovo" class="inputNovo" value="${list[index].tarefa}">
             <button id="buttonNovo" class="buttonNovo">Salvar</button>
         </div>`;
