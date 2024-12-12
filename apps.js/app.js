@@ -36,26 +36,35 @@ function adiciona() {
 
 function atualizarLista() {
     listContainer.innerHTML = list
-    .map(
-        (item) => {
-            // Determina a classe a ser usada (concluída ou pendente)
-            const itemClass = item.feita ? 'task-item checked' : 'task-item pending';
-            
-            return `
-    <li class="${itemClass}">
-        <div class="divCheck">
-            <div>
-                <input type="checkbox" name="itens" class="caixa" ${item.feita ? 'checked' : ''} data-id="${item.id}">
-            </div>
-            <div>${item.tarefa}</div>
-        </div>
-        <div class="actions">
-            <img class="editar" data-id="${item.id}" src="recursos/img/editar.svg" alt="Editar">
-            <img class="delete" data-id="${item.id}" src="recursos/img/deletar.svg" alt="Deletar">
-        </div>
-    </li>`;
+    .map((item) => {
+        // Determina a classe a ser usada (concluída ou pendente)
+        let itemClass;
+        if (item.feita) {
+        itemClass = 'task-item checked';
+        } else {
+        itemClass = 'task-item pending';
         }
-    )
+
+        // Determina se o checkbox será marcado
+        let checkboxChecked = '';
+        if (item.feita) {
+        checkboxChecked = 'checked';
+        }
+
+        return `
+        <li class="${itemClass}">
+            <div class="divCheck">
+                <div>
+                    <input type="checkbox" name="itens" class="caixa" ${checkboxChecked} data-id="${item.id}">
+                </div>
+                <div>${item.tarefa}</div>
+            </div>
+            <div class="actions">
+                <img class="editar" data-id="${item.id}" src="recursos/img/editar.svg" alt="Editar">
+                <img class="delete" data-id="${item.id}" src="recursos/img/deletar.svg" alt="Deletar">
+            </div>
+        </li>`;
+    })
     .join("");
 
     // Eventos de edição, exclusão e checkbox
