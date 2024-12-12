@@ -20,6 +20,7 @@ themeToggle.addEventListener("click", () => {
     document.documentElement.setAttribute("data-theme", "light");
     themeIcon.src = "recursos/img/lightMode.svg"; // Ícone para o modo claro
     localStorage.setItem("theme", "light");
+    
     const closeModalButton = document.querySelector("#close-modal");
     const aluno = document.querySelector(".modal-title");
     const modal = document.querySelector("#modal");
@@ -35,6 +36,7 @@ themeToggle.addEventListener("click", () => {
     document.documentElement.setAttribute("data-theme", "dark");
     themeIcon.src = "recursos/img/darkMode.svg"; // Ícone para o modo escuro
     localStorage.setItem("theme", "dark");
+
     const closeModalButton = document.querySelector("#close-modal");
     const aluno = document.querySelector(".modal-title");
     const modal = document.querySelector("#modal");
