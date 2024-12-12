@@ -24,14 +24,14 @@ function hideDw() {
   dw.innerHTML = "<h2 style= font-size:2rem>Alunos</h2>";
 }
 
-function showDw(){
+function showDw() {
   dw.innerHTML = `<h2 id="DW">Desenvolvimento web 1</h2>`
 }
 
 const changeSize = mql => {
   medium.matches
-  ? hideDw()
-  : showDw()
+    ? hideDw()
+    : showDw()
 }
 
 medium.addListener(changeSize)

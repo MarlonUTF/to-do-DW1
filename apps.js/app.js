@@ -1,4 +1,4 @@
-let list = []; 
+let list = [];
 let idButton = document.querySelector("#button");
 let idInput = document.querySelector("#input");
 let listContainer = document.querySelector("#list");
@@ -36,22 +36,22 @@ function adiciona() {
 
 function atualizarLista() {
     listContainer.innerHTML = list
-    .map((item) => {
-        // Determina a classe a ser usada (concluída ou pendente)
-        let itemClass;
-        if (item.feita) {
-        itemClass = 'task-item checked';
-        } else {
-        itemClass = 'task-item pending';
-        }
+        .map((item) => {
+            // Determina a classe a ser usada (concluída ou pendente)
+            let itemClass;
+            if (item.feita) {
+                itemClass = 'task-item checked';
+            } else {
+                itemClass = 'task-item pending';
+            }
 
-        // Determina se o checkbox será marcado
-        let checkboxChecked = '';
-        if (item.feita) {
-        checkboxChecked = 'checked';
-        }
+            // Determina se o checkbox será marcado
+            let checkboxChecked = '';
+            if (item.feita) {
+                checkboxChecked = 'checked';
+            }
 
-        return `
+            return `
         <li class="${itemClass}">
             <div class="divCheck">
                 <div>
@@ -64,8 +64,8 @@ function atualizarLista() {
                 <img class="delete" data-id="${item.id}" src="recursos/img/deletar.svg" alt="Deletar">
             </div>
         </li>`;
-    })
-    .join("");
+        })
+        .join("");
 
     // Eventos de edição, exclusão e checkbox
     document.querySelectorAll(".editar").forEach((button) => {

@@ -174,11 +174,11 @@ li {
   font-size: 1rem;
 }
 
-.modal-header #DW{
+.modal-header #DW {
   font-size: 1.8rem;
 }
 
-.modal-header .modal-title{
+.modal-header .modal-title {
   position: fixed;
   left: 80vh;
   font-size: 1.7rem;
@@ -278,8 +278,10 @@ li {
 
 /* Estilo para tarefas concluídas */
 .task-item.checked {
-  border: 2px solid var(--cor2); /* Verde */
-  background-color: var(--cor2); /* Verde */
+  border: 2px solid var(--cor2);
+  /* Verde */
+  background-color: var(--cor2);
+  /* Verde */
 }
 
 .task-item.checked .item {
@@ -289,14 +291,16 @@ li {
 
 /* Estilo para tarefas não concluídas */
 .task-item.pending {
-  border: 2px solid #888; /* Cinza */
+  border: 2px solid #888;
+  /* Cinza */
   /* background-color: var(--cor2); */
   color: var(--dark);
   background-color: var(--white);
 }
 
 .task-item.pending svg {
-  color: white; /* Cor do ícone SVG */
+  color: white;
+  /* Cor do ícone SVG */
 }
 
 .task-item.pending .item {
@@ -317,15 +321,21 @@ li {
 }
 
 .task-item div {
-  max-width: 100%; /* Permite que o texto ocupe toda a largura disponível */
-  word-wrap: break-word; /* Quebra palavras longas */
-  overflow-wrap: break-word; /* Compatível com navegadores modernos */
-  white-space: normal; /* Permite quebra de linha */
-  word-break: break-word; /* Garante que palavras longas sejam quebradas corretamente */
+  max-width: 100%;
+  /* Permite que o texto ocupe toda a largura disponível */
+  word-wrap: break-word;
+  /* Quebra palavras longas */
+  overflow-wrap: break-word;
+  /* Compatível com navegadores modernos */
+  white-space: normal;
+  /* Permite quebra de linha */
+  word-break: break-word;
+  /* Garante que palavras longas sejam quebradas corretamente */
 }
 
 .textoTarefa {
-  width: 100%; /* Faz o texto ocupar toda a largura disponível */
+  width: 100%;
+  /* Faz o texto ocupar toda a largura disponível */
 }
 
 /* Contêiner da barra de progresso */
@@ -337,18 +347,21 @@ li {
   margin: 20px auto;
   background-color: #f3f4f6;
   border-radius: 25px;
-  width: 70vw; /* Definir a largura da barra */
+  width: 70vw;
+  /* Definir a largura da barra */
 }
 
 /* Barra de progresso */
 progress {
-  width: 100%; /* A barra ocupa 100% da largura do contêiner */
+  width: 100%;
+  /* A barra ocupa 100% da largura do contêiner */
   height: 30px;
   -webkit-appearance: none;
   appearance: none;
   border-radius: 20px;
   background-color: #e0e0e0;
-  z-index: 1; /* A barra tem um índice z menor */
+  z-index: 1;
+  /* A barra tem um índice z menor */
 }
 
 /* Estilo da barra de progresso - Webkit */
@@ -380,16 +393,17 @@ progress::-moz-progress-bar {
   font-weight: bold;
   color: white;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  z-index: 2; /* O texto fica sobre a barra de progresso */
+  z-index: 2;
+  /* O texto fica sobre a barra de progresso */
 }
 
-.editNovo{
+.editNovo {
   display: flex;
   align-items: center;
   width: 70vw;
 }
 
-.inputNovo{
+.inputNovo {
   border: none;
   padding-left: 5px;
   border-radius: 15px;
@@ -399,7 +413,7 @@ progress::-moz-progress-bar {
   border: 1PX solid black;
 }
 
-.buttonNovo{
+.buttonNovo {
   border: none;
   height: 40px;
   width: 60px;
@@ -428,14 +442,14 @@ progress::-moz-progress-bar {
     width: 100%;
   }
 
-  header{
+  header {
     width: 70vw;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin: 40px 0 20px 0;
   }
-  
+
   .modo {
     width: 40px;
     height: 40px;
@@ -446,7 +460,7 @@ progress::-moz-progress-bar {
     align-items: center;
   }
 
-  h1{
+  h1 {
     margin-bottom: 0;
     margin-top: 0;
     margin-right: 20px;
@@ -460,93 +474,94 @@ progress::-moz-progress-bar {
     transform: translate(-50%, -50%);
     width: 80vw;
     max-width: 90%;
-  
+
     background-color: var(--cor1);
     color: var(--cor2);
     height: 90vh;
     background-color: #fff;
     border-radius: 0.5rem;
     z-index: 10;
-  
+
     color: black;
   }
-  
+
   #modal.hide {
     top: 0;
   }
-  
+
   .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;
-  
+
     font-size: 1rem;
   }
-  
-  .modal-header .modal-title{
+
+  .modal-header .modal-title {
     position: normal;
     left: 80vh;
     font-size: 1.7rem;
     background-color: bla;
   }
-  
-  .modal-header #close-modal{
+
+  .modal-header #close-modal {
     display: flex;
     justify-content: space-evenly;
     width: 3vw;
     height: 3vh;
   }
-  
-  .modal-body .profiles{
+
+  .modal-body .profiles {
     display: flex;
     flex-direction: column;
   }
-  
-  .modal-body .profile{
+
+  .modal-body .profile {
     display: flex;
     flex-direction: column;
   }
-  
-  .modal-body .profile-image{
+
+  .modal-body .profile-image {
     width: 60vw;
     height: 40vh;
     border-radius: 5%;
   }
-  
-  .modal-body .profile-box{
+
+  .modal-body .profile-box {
     width: 80vw;
     height: 22vh;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     margin-bottom: -6rem;
   }
-  
-  .modal-body .profile-name, .profile-phone{
+
+  .modal-body .profile-name,
+  .profile-phone {
     text-align: center;
     color: black;
-  
+
     font-size: 2rem;
   }
-  
-  .modal-body a{
+
+  .modal-body a {
     color: black;
     text-decoration: none;
     font-size: 1.3rem;
-    
+
   }
-  
-  .modal-body a:hover{
+
+  .modal-body a:hover {
     text-decoration: underline;
     text-decoration-color: green;
     text-decoration-thickness: 10px;
     transition: .1s;
   }
 
-  .editNovo{
+  .editNovo {
     justify-content: space-evenly;
   }
 }
