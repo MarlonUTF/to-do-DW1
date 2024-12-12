@@ -149,35 +149,27 @@ function selecionados() {
 }
 
 function salvarNoLocalStorage() {
-    try {
-        localStorage.setItem("tarefaLista", JSON.stringify(list));
-    } catch (error) {
-        console.error("Erro ao salvar no localStorage:", error);
-    }
+    localStorage.setItem("tarefaLista", JSON.stringify(list));
 }
 
 function carregarDoLocalStorage() {
-    try {
-        const tarefasSalvas = localStorage.getItem("tarefaLista");
-        if (tarefasSalvas) {
-            list = JSON.parse(tarefasSalvas);
-            // Atualizar a lista após carregar do localStorage
-            atualizarLista();
-            // Certificar-se de que os checkboxes estejam corretamente marcados
-            list.forEach((item, index) => {
-                const checkbox = document.querySelectorAll(".caixa")[index];
-                if (item.feita) {
-                    checkbox.checked = true;
-                    const li = listContainer.children[index];
-                    const itemText = li.querySelector("div");  // Seleciona o texto do item
-                    li.classList.add("checked");
-                    li.classList.remove("pending");
-                    itemText.style.textDecoration = "line-through";  // Aplica o riscado
-                }
-            });
-        }
-    } catch (error) {
-        console.error("Erro ao carregar do localStorage:", error);
+    const tarefasSalvas = localStorage.getItem("tarefaLista");
+    if (tarefasSalvas) {
+        list = JSON.parse(tarefasSalvas);
+        // Atualizar a lista após carregar do localStorage
+        atualizarLista();
+        // Certificar-se de que os checkboxes estejam corretamente marcados
+        list.forEach((item, index) => {
+            const checkbox = document.querySelectorAll(".caixa")[index];
+            if (item.feita) {
+                checkbox.checked = true;
+                const li = listContainer.children[index];
+                const itemText = li.querySelector("div"); // Seleciona o texto do item
+                li.classList.add("checked");
+                li.classList.remove("pending");
+                itemText.style.textDecoration = "line-through"; // Aplica o riscado
+            }
+        });
     }
 }
 

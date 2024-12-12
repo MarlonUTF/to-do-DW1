@@ -40,7 +40,6 @@
 }
 
 body {
-  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,6 +57,7 @@ body {
   min-width: 100vw;
   min-height: 100vh;
 }
+
 
 h1 {
   margin-bottom: 40px;
