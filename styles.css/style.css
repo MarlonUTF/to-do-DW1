@@ -214,17 +214,17 @@ li {
 }
 
 #marlon {
-  background-image: url("/recursos/img/photo_marlon.jpg");
+  background-image: url("recursos/img/photo_marlon.jpg");
   background-size: cover;
   background-position: center;
 }
 #ryan {
-  background-image: url("/recursos/img/photo_ryan.jpg");
+  background-image: url("recursos/img/photo_ryan.jpg");
   background-size: cover;
   background-position: center;
 }
 #talisson {
-  background-image: url("/recursos/img/photo_talisson.jpg");
+  background-image: url("recursos/img/photo_talisson.jpg");
   background-size: cover;
   background-position: right;
 }
